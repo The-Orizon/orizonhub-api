@@ -17,17 +17,20 @@ See also: https://github.com/gumblex/orizonhub
 + Response 200 (application/json)
 
     + Attributes (object)
-        + id (number) - Bot ID
-        + name (string) - Bot name
-        + type (enum[string]) - Bot type
+        + id (number, required) - Bot ID
+        + name (string, required) - Bot name
+        + type (enum[string], required) - Bot type
+
             + Members
                 + `protocol_bridge`
                 + `public_service`
                 + `logger`
-        + admin (string) - userID of bot admin
+
+        + admin (string, required) - userID of bot admin
         + hooks (array) - what message should the bot get
         + scope (array) - permissions of api request
         + mode (enum[string]) - bot mode
+
             + Members
                 + `online`
                 + `offline`
