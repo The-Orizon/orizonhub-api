@@ -72,6 +72,8 @@ See also: https://github.com/gumblex/orizonhub
 
 ### Universal GET [/getUpdates?offset={offset}&timeout={timeout}]
 
+#### Get Message [GET]
+
 + Headers
         X-APIKey: <Your_API_KEY>
 
@@ -86,20 +88,23 @@ See also: https://github.com/gumblex/orizonhub
                 "message_id": 0,
                 "user": "<USERID>",
                 "content": "<CONTENT>"
+                "reply_to": <message_id_optional>
             }
 
 ### Messenging across networks [/message/all]
 
 #### Post Message [POST]
 
-+ Headers
-        X-APIKey: <Your_API_KEY>
-
 + Request (application/json)
 
+    + Headers
+            X-APIKey: <Your_API_KEY>
+   
+    + Body
         {
             "user": "<USERID>",
-            "message": "<message_content>"
+            "message": "<message_content>",
+            "reply_to": <message_id>
         }
 
 + Response 200 (application/json)
