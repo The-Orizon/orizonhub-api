@@ -49,6 +49,9 @@ See also: https://github.com/gumblex/orizonhub
 
 #### Update Settings [POST]
 
++ Headers
+        X-APIKey: <Your_API_KEY>
+
 + Request (application/json)
 
         {
@@ -64,5 +67,49 @@ See also: https://github.com/gumblex/orizonhub
 + Response 200 (application/json)
 
             {
-                "_": 200
+                "result": 200
+            }
+
+### Universal GET [/getUpdates?offset={offset}&timeout={timeout}]
+
++ Headers
+        X-APIKey: <Your_API_KEY>
+
++ Parameters
+        + offset: 15 (number) ... Polling Offset
+        + timeout: 15 (number) ... Polling time(sec)
+
++ Response 200 (application/json)
+
+            {
+                "type": "net_message",
+                "message_id": 0,
+                "user": "<USERID>",
+                "content": "<CONTENT>"
+            }
+
+### Messenging across networks [/message/all]
+
+#### Post Message [POST]
+
++ Headers
+        X-APIKey: <Your_API_KEY>
+
++ Request (application/json)
+
+        {
+            "user": "<USERID>",
+            "message": "<message_content>"
+        }
+
++ Response 200 (application/json)
+
+            {
+                "result": 200,
+                "message": {
+                    "type": "net_message",
+                    "message_id": 0,
+                    "user": "<USERID>",
+                    "content": "<CONTENT>"
+                    }
             }
