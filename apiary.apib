@@ -1,39 +1,50 @@
 FORMAT: 1A
 HOST: http://polls.apiblueprint.org/
 
-# orizonhub
+# OrizonHub
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+See also: https://github.com/gumblex/orizonhub
 
-## Questions Collection [/questions]
+## Group Messenging
 
-### List All Questions [GET]
+### General Settings [/settings]
+
+#### Get Current Setting [GET]
+
++ Headers
+        X-APIKey: <Your_API_KEY>
 
 + Response 200 (application/json)
 
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
+    + Attributes (object)
+        + id (int) - Bot ID
+        + name (string) - Bot name
+        + type (enum[string]) - Bot type
+            + Members
+                + `protocol_bridge`
+                + `public_service`
+                + `logger`
+        + admin (string) - userID of bot admin
+        + hooks (array) - what message should the bot get
+        + scope (array) - permissions of api request
+        + mode (enum[string]) - bot mode
+            + Members
+                + `online`
+                + `offline`
+                + `maintenance`
 
-### Create a New Question [POST]
+    + Body
+        {
+            "id": 0,
+            "name": "Tox",
+            "type": "protocol_bridge",
+            "admin": "tox: quininer",
+            "hooks": ["protocol.all.message"],
+            "scope": ["userdb.get", "userdb.put"],
+            "mode": "online"
+        }
+
+#### Create a New Question [POST]
 
 You may create your own question using this action. It takes a JSON
 object containing a question and a collection of answers in the
